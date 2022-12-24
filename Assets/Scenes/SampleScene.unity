@@ -592,11 +592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824cf23c500f72b468a56b970c9bf896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapVisualizer: {fileID: 1809476234}
   startPosition: {x: 0, y: 0}
   iterations: 10
   walkLength: 10
   startRandomlyEachIteration: 1
-  tilemapVisualizer: {fileID: 1809476234}
 --- !u!4 &1510409495
 Transform:
   m_ObjectHideFlags: 0
