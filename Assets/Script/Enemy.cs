@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     public Transform startPosition;
     public float speed;
     public float range;
-    public GameObject ch;
     public bool isattack;
     public float attacktimer;
     public float attackrange;
@@ -28,10 +27,10 @@ public class Enemy : MonoBehaviour
         {
             FollowPlayer();
         }
-        else
+        /*else
         {
             GoStartPosition();
-        }
+        }*/
         attack();
     }
 
@@ -61,7 +60,7 @@ public class Enemy : MonoBehaviour
         else
         {
             isattack=false;
-            attacktimer=3f;
+            attacktimer=1f;
         }
           if (attacktimer>0&&isattack==true)
           {
@@ -69,8 +68,8 @@ public class Enemy : MonoBehaviour
           }
           else if (attacktimer<0&&isattack==true)
           {
-              ch.GetComponent<Character>().hurt(20);
-              attacktimer=1.5f;
+              target.GetComponent<Character>().hurt(20);
+              attacktimer=1f;
           }
     }
     private void OnCollisionEnter2D(Collision2D col)

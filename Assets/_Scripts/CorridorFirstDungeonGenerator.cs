@@ -12,6 +12,7 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     [Range(0.1f,1)]
     private float roomPercent = 0.8f;
 
+
     protected override void RunProceduralGeneration()
     {
         CorridorFirstGeneration();
