@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public bool isattack;
     public float attacktimer;
     public float attackrange;
+    public float currentspeed;
+    public int health;
 
 
     void Start()
@@ -42,6 +44,14 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, startPosition.position, speed * Time.deltaTime);
     }
+    public void hurt(int damage)
+    {
+        health=health-damage;
+          if (health<=0)
+          {
+             Destroy(gameObject);
+          }
+    }
      void attack()//bu kısım düzeltilecek
     {
          if(Vector3.Distance(target.position,transform.position) <= attackrange)
@@ -62,5 +72,19 @@ public class Enemy : MonoBehaviour
               ch.GetComponent<Character>().hurt(20);
               attacktimer=1.5f;
           }
+    }
+    private void OnCollisionEnter2D(Collision2D col)
+     {
+        if (col.gameObject.tag=="Player")
+        {
+               speed=0.001f;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D col)
+     {
+        if (col.gameObject.tag=="Player")
+        {
+               speed=currentspeed;
+        }
     }
 }
