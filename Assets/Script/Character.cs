@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
-     public float speed = 10.0f;
-     public int health;
-     public Transform checkpoint;
+    public float speed = 10.0f;
+    public int health;
+    public Transform checkpoint;
+    public WaterCounter counter;
+
     void Start()
     {
         
@@ -26,6 +28,15 @@ public class Character : MonoBehaviour
         if (health<=0)
         {
            transform.position=checkpoint.position;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            counter.IncreaseScore();
+            Destroy(collision.gameObject);
         }
     }
 }
