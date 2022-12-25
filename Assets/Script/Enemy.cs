@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Transform target;
-    public Transform startPosition;
+    //public Transform startPosition;
     public float speed;
     public float range;
     public bool isattack;
@@ -14,12 +14,15 @@ public class Enemy : MonoBehaviour
     public float attackrange;
     public float currentspeed;
     public int health;
+    private GameObject startPosition;
 
 
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
         isattack=false;
+        startPosition = new GameObject("EnemyStartPosition");
+        startPosition.transform.position = transform.position;
     }
     void Update()
     {
@@ -27,10 +30,10 @@ public class Enemy : MonoBehaviour
         {
             FollowPlayer();
         }
-        /*else
+        else
         {
             GoStartPosition();
-        }*/
+        }
         attack();
     }
 
@@ -41,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     private void GoStartPosition()
     {
-        transform.position = Vector3.MoveTowards(transform.position, startPosition.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, startPosition.transform.position, speed * Time.deltaTime);
     }
     public void hurt(int damage)
     {

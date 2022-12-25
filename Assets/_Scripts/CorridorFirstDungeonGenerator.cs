@@ -13,6 +13,16 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private float roomPercent = 0.8f;
 
 
+    public ItemPlacementManager itemPlacement;
+    private GameObject character;
+    public GameObject santa;
+    private GameObject santaClone;
+
+    private void Start()
+    {
+        character = GameObject.FindWithTag("Player");
+    }
+
     protected override void RunProceduralGeneration()
     {
         CorridorFirstGeneration();
@@ -74,11 +84,39 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         int roomToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * roomPercent);
 
         List<Vector2Int> roomsToCreate = potentialRoomPositions.OrderBy(x => Guid.NewGuid()).Take(roomToCreateCount).ToList();
+        int createdRoomCount = 1;
+        Debug.Log(roomToCreateCount);
+
+        if (santaClone)
+            Destroy(santaClone);
+        itemPlacement.Reset();
 
         foreach (var roomPosition in roomsToCreate)
         {
             var roomFloor = RunRandomWalk(randomWalkParameters, roomPosition);
             roomPositions.UnionWith(roomFloor);
+
+            if (createdRoomCount == 1)
+            {
+                Debug.Log(createdRoomCount + " 1 " + roomsToCreate.Count);
+                character.transform.position = (Vector3Int)roomPosition;
+                itemPlacement.PlaceItems(roomFloor);
+            }
+            else if (createdRoomCount == roomToCreateCount)
+            {
+                Debug.Log(createdRoomCount + " 2 " + roomsToCreate.Count);
+                Debug.Log("noel baba");
+                santaClone = Instantiate(santa, (Vector3Int)roomPosition, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log(createdRoomCount + " 3 " + roomsToCreate.Count);
+                itemPlacement.PlaceItems(roomFloor);
+                itemPlacement.PlaceEnemies(roomFloor);
+            }
+
+            createdRoomCount++;
+
         }
         return roomPositions;
     }
