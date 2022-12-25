@@ -6,9 +6,9 @@ public class RandomDungeonGenerator : MonoBehaviour
 {
     public AbstractDungeonGenerator generator;
 
-    private void Awake()
+   /* private void Awake()
     {
         generator.GenerateDungeon();
-    }
+    }*/
   
 }

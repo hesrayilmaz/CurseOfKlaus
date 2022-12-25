@@ -5,23 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
-    public float speed ;
+    public float speed;
     public int health;
     public Transform checkpoint;
     public WaterCounter counter;
     public float attacktimer;  
-     public float horizontal;
-     public float vertical;
-     public bool facingRight;
-     public Animator anim;
-     public float attackrange;
-     public Transform attackpoint;
-     public LayerMask enemylayers;
-     public bool canattack;
-     void Update()
+    public float horizontal;
+    public float vertical;
+    public bool facingRight;
+    public Animator anim;
+    public float attackrange;
+    public Transform attackpoint;
+    public LayerMask enemylayers;
+    public bool canattack;
+    
+    void Update()
     {
-         horizontal = Input.GetAxis("Horizontal");
-       vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
         Animation();
         attackspacing();
         if (Input.GetKeyDown(KeyCode.Space)&&canattack==true)
@@ -79,20 +80,19 @@ public class Character : MonoBehaviour
     {
         if (horizontal>0)
         {     
-           Characterwalking();
+            Characterwalking();
         }
         else if(horizontal<0)
         {
-              Characterwalking();
+            Characterwalking();
         }  
         else if (horizontal==0)
         {
-             anim.SetBool("side.walk",false);
+            anim.SetBool("side.walk",false);
         }
         if (facingRight==false&&horizontal>0)
         {
             CharacterFlip();
-            
         }
         if (facingRight == true && horizontal < 0)
         {
@@ -100,40 +100,38 @@ public class Character : MonoBehaviour
         }     
         if (vertical>0)
         {
-               characterwalkingup();
+            characterwalkingup();
         }
         else if(vertical<0)
         {
-             characterwalkingdown();
+            characterwalkingdown();
         }
          else if (vertical==0)
         {
             anim.SetBool("up.walk",false);
-             anim.SetBool("down.walk",false);
+            anim.SetBool("down.walk",false);
         } 
     }
     void Characterwalking()
     {
-            anim.SetBool("down.iddle",false);
-              anim.SetBool("up.iddle",false);
-            anim.SetBool("side.iddle",true);
-             anim.SetBool("side.walk",true);   
+        anim.SetBool("down.iddle",false);
+        anim.SetBool("up.iddle",false);
+        anim.SetBool("side.iddle",true);
+        anim.SetBool("side.walk",true);   
     }
     void characterwalkingup()
     {
         anim.SetBool("side.iddle",false);
         anim.SetBool("down.iddle",false);
         anim.SetBool("up.iddle",true);
-         anim.SetBool("up.walk",true);
-
+        anim.SetBool("up.walk",true);
     }
-     void characterwalkingdown()
+    void characterwalkingdown()
     {
         anim.SetBool("side.iddle",false);
         anim.SetBool("up.iddle",false);
         anim.SetBool("down.iddle",true);
-         anim.SetBool("down.walk",true);
-
+        anim.SetBool("down.walk",true);
     }
     void CharacterFlip()
     {
@@ -141,14 +139,14 @@ public class Character : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-        
     }
     public void hurt(int damage)
     {
         health=health-damage;
         if (health<=0)
         {
-           transform.position=checkpoint.position;
+            transform.position=checkpoint.position;
+            SceneManager.LoadScene(0);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

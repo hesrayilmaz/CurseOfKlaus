@@ -21,6 +21,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private void Start()
     {
         character = GameObject.FindWithTag("Player");
+        tilemapVisualizer.Clear();
+        RunProceduralGeneration();
     }
 
     protected override void RunProceduralGeneration()

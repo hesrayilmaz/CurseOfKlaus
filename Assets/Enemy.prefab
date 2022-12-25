@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6216242368569708817}
   - component: {fileID: 6216242368569708816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dungeon_Character_2_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6216242368781577925}
   - component: {fileID: 6216242368781577924}
   - component: {fileID: -7658879160247088536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8d994f4e604f549a47617a66d41092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 0}
   speed: 2
   range: 5
   isattack: 0
