@@ -176,3 +176,5 @@ MonoBehaviour:
   health: 100
   anim: {fileID: 65629098220431263}
   isdie: 0
+  ishurting: 0
+  currentrange: 15
