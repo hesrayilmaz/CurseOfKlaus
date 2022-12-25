@@ -98,7 +98,7 @@ public class ItemPlacementManager : MonoBehaviour
 
     public void PlaceEnemies(HashSet<Vector2Int> floorPositions)
     {
-        int enemyCount = Random.Range(4, 7);
+        int enemyCount = Random.Range(4, 6);
         for (int i = 0; i < enemyCount; i++)
         {
             if (innerTiles.Count == 0)

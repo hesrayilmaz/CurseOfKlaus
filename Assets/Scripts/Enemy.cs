@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
           {
              anim.SetTrigger("isattacking");
               AudioManager.Instance.PlaySFX("enemyattack");
-              target.GetComponent<Character>().hurt(20);
+              target.GetComponent<Character>().hurt(5);
               attacktimer=1f;
           }
     }

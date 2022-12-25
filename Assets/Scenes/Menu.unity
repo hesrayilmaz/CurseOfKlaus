@@ -1324,8 +1324,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "selamun aleyk\xFCm vesselam oyun w a s d oynaniyo space vuruyo yeter bu
-    kadar bilgi"
+  m_text: "Movement:\"W,A,S,D\" ya da y\xF6n tu\u015Flar\u0131 \nAttack:\"C\"\nPause:\"P\"\n\n\nYapanlar:\nHatice
+    Esra Y\u0131lmaz\nMelih Bahad\u0131r\nMehmet Nihat Evren"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2899,18 +2899,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bu y\u0131l kar ya\u011Fm\u0131yordu \xE7\xFCnk\xFC noel baba ka\xE7\u0131\u0131rlm\u0131\u015Ft\u0131.\nNoel
-    babay\u0131 ka\xE7\u0131ran iblisler d\xFCnyaya bir daha kar ya\u011Fmamas\u0131
-    ve her yeri karanl\u0131k bo\u011Fmas\u0131 i\xE7in her \u015Feyi yapard\u0131.
-    Bir tek siz bu k\xF6t\xFCl\xFC\u011F\xFCn \xF6n\xFCne ge\xE7ip k\u0131\u015F\u0131
-    getirebilirdiniz. Noel babay\u0131 kurtarman\u0131n tek yolu karanl\u0131\u011Fa
-    hapslmu\u015F zindandaki iblislerin kral\u0131n\u0131 \xF6ld\xFCrmekti. Ama o
-    iblise k\u0131l\u0131\xE7 i\u015Flemiyordu sadece kutsal damacanadaki suyla \xF6len
-    bu iblisi \xF6ld\xFCrmek i\xE7in yola \xE7\u0131kt\u0131n. Geride aileni ve senin
-    gibi k\u0131\u015F\u0131 geri istiyen onca insana k\u0131\u015F\u0131 geri getirmek
-    i\xE7in yola koyuldun. amac\u0131n iblis kral\u0131n\u0131 yenip noel babaya\u0131
-    kurtarmak,k\u0131\u015F\u0131 kurtarmak\n\n\n\n\n\n\nMovement:\"W,A,S,D\" ya
-    da y\xF6n tu\u015Flar\u0131 \nAttack:\"C\"\nPause:\"P\""
+  m_text: "Bu y\u0131l kar ya\u011Fm\u0131yor ve \xE7ocuklar\u0131 hediyesiz bir
+    y\u0131lba\u015F\u0131 bekliyor \xE7\xFCnk\xFC noel baba ka\xE7\u0131r\u0131ld\u0131\u0131.\nKa\xE7\u0131ran
+    iblisler d\xFCnyaya bir daha kar ya\u011Fmamas\u0131 ve her yeri karanl\u0131k
+    bo\u011Fmas\u0131 i\xE7in her \u015Feyi yapmaya haz\u0131r. Bir tek siz bu k\xF6t\xFCl\xFC\u011F\xFCn
+    \xF6n\xFCne ge\xE7ip k\u0131\u015F\u0131 getirebilirsiniz. Noel babay\u0131 kurtarman\u0131n
+    tek yolu karanl\u0131\u011Fa hapsolmu\u015F zindandaki iblislerin kral\u0131n\u0131
+    \xF6ld\xFCrmek. Ama o iblise k\u0131l\u0131\xE7 i\u015Flemiyor sadece kutsal
+    damacanadaki suyla \xF6l\xFCyor. Geride aileni ve senin gibi k\u0131\u015F\u0131
+    geri istiyen onca insana k\u0131\u015F\u0131 geri getirmek i\xE7in yola koyul!
+    \xD6n\xFCne \xE7\u0131kan d\xFC\u015Fmanlarla sava\u015F, kutsal damacanalar\u0131
+    toplay\u0131 iblisle y\xFCzle\u015F!\n\n\n\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
