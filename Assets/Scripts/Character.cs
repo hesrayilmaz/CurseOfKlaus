@@ -163,7 +163,7 @@ public class Character : MonoBehaviour
             AudioManager.Instance.PlaySFX("collect");
             counter.IncreaseScore();
             Destroy(collision.gameObject);
-            if (art>=20)
+            if (art>=12)
             {
                 SceneManager.LoadScene(2);
             }

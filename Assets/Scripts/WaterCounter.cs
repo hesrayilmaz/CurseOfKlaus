@@ -10,12 +10,12 @@ public class WaterCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       waterText.text=0+"/20";
+       waterText.text=0+"/12";
     }
 
     public void IncreaseScore()
     {
         score++;
-        waterText.text = score + "/20";
+        waterText.text = score + "/12";
     }
 }
