@@ -145,7 +145,7 @@ public class Character : MonoBehaviour
         health=health-damage;
         if (health<=0)
         {
-            transform.position=checkpoint.position;
+            //transform.position=checkpoint.position;
             SceneManager.LoadScene(0);
         }
     }
