@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2837055699799888043}
   - component: {fileID: 2837055699799888040}
-  - component: {fileID: 2837055699799888042}
   - component: {fileID: 2837055699799888045}
   m_Layer: 6
   m_Name: Santa
@@ -86,25 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2837055699799888042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2837055699799888041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8d994f4e604f549a47617a66d41092, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  range: 5
-  isattack: 0
-  attacktimer: 1
-  attackrange: 1
-  currentspeed: 4
-  health: 100
 --- !u!61 &2837055699799888045
 BoxCollider2D:
   m_ObjectHideFlags: 0

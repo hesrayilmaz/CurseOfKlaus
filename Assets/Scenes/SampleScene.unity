@@ -1116,7 +1116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777531202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.2383, y: 25.710226, z: -9.461921}
+  m_LocalPosition: {x: -5.438301, y: 25.460226, z: -9.461921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12396,7 +12396,7 @@ MonoBehaviour:
   - {fileID: 2328945928907799327, guid: b8ca187eb3ab3584bbb59f5deb1bb768, type: 3}
   - {fileID: 6755797189775094079, guid: 2837ec528e579b845aa24f2ed6805357, type: 3}
   - {fileID: 6601238048117025414, guid: 5f33354a3c105cd4682b93f25815739f, type: 3}
-  enemy: {fileID: 6216242368781577946, guid: 12c8841eb95596e4baa7e1e0a4d81c97, type: 3}
+  enemy: {fileID: 65629098220431260, guid: 12c8841eb95596e4baa7e1e0a4d81c97, type: 3}
   water: {fileID: 6791249735568863436, guid: fc738d6fd75848b43b696fd1e62d3b90, type: 3}
 --- !u!4 &1019018873
 Transform:
@@ -36150,7 +36150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875852209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 25.5, z: 0}
+  m_LocalPosition: {x: 8.82, y: 25.25, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36472,5 +36472,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1ac0b06abd3563b459234e4c0b237f79, type: 3}

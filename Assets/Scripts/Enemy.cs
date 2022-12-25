@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public float currentspeed;
     public int health;
     private GameObject startPosition;
+    public Animator anim;
+    public bool isdie;
+    public bool ishurting;
 
 
     void Start()
@@ -23,6 +26,8 @@ public class Enemy : MonoBehaviour
         isattack=false;
         startPosition = new GameObject("EnemyStartPosition");
         startPosition.transform.position = transform.position;
+        anim=GetComponent<Animator>();
+        isdie=false;
     }
     void Update()
     {
@@ -40,18 +45,30 @@ public class Enemy : MonoBehaviour
     private void FollowPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        anim.SetBool("iswalking",true);
     }
 
     private void GoStartPosition()
     {
+         anim.SetBool("iswalking",true);
         transform.position = Vector3.MoveTowards(transform.position, startPosition.transform.position, speed * Time.deltaTime);
     }
     public void hurt(int damage)
-    {
+    {        
+        ishurting=true;
         health=health-damage;
           if (health<=0)
           {
-             Destroy(gameObject);
+            isdie=true;
+            speed=0;
+             GetComponent<Collider2D>().enabled = false;
+             anim.SetTrigger("isdie");     
+             Destroy(gameObject,0.7f);
+          }
+          else
+          {
+            anim.SetTrigger("ishurting");
+            ishurting=false;
           }
     }
      void attack()//bu kısım düzeltilecek
@@ -65,12 +82,13 @@ public class Enemy : MonoBehaviour
             isattack=false;
             attacktimer=1f;
         }
-          if (attacktimer>0&&isattack==true)
+          if (attacktimer>0&&isattack==true&&ishurting==false)
           {
              attacktimer=attacktimer-Time.deltaTime;
           }
-          else if (attacktimer<0&&isattack==true)
+          else if (attacktimer<0&&isattack==true&&ishurting==false)
           {
+             anim.SetTrigger("isattacking");
               target.GetComponent<Character>().hurt(20);
               attacktimer=1f;
           }
@@ -79,12 +97,13 @@ public class Enemy : MonoBehaviour
      {
         if (col.gameObject.tag=="Player")
         {
+            anim.SetBool("iswalking",false);
                speed=0.001f;
         }
     }
     private void OnCollisionExit2D(Collision2D col)
      {
-        if (col.gameObject.tag=="Player")
+        if (col.gameObject.tag=="Player"&&isdie==false)
         {
                speed=currentspeed;
         }
