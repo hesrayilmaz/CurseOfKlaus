@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Character : MonoBehaviour
 {
     public float speed;
+    public int art;
     public int health;
     public Transform checkpoint;
     public WaterCounter counter;
@@ -29,6 +30,7 @@ public class Character : MonoBehaviour
              attackspacing();
              if (Input.GetKeyDown(KeyCode.C)&&canattack==true)
              {        
+                 AudioManager.Instance.PlaySFX("characterattack");
                  attack(); 
                  attackanimation();  
                  canattack=false;      
@@ -53,7 +55,7 @@ public class Character : MonoBehaviour
     {
         Collider2D[] hitEnemies=Physics2D.OverlapCircleAll(attackpoint.position,attackrange,enemylayers);
         foreach (Collider2D enemy in hitEnemies)
-        {
+        {         
             enemy.GetComponent<Enemy>().hurt(20);
         }
     }
@@ -157,9 +159,14 @@ public class Character : MonoBehaviour
     {
         if (collision.gameObject.tag == "Water")
         {
+            art++;           
             AudioManager.Instance.PlaySFX("collect");
             counter.IncreaseScore();
             Destroy(collision.gameObject);
+            if (art>=20)
+            {
+                SceneManager.LoadScene(2);
+            }
         }
     }
 }

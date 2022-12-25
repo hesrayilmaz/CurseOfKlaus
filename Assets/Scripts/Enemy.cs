@@ -91,6 +91,7 @@ public class Enemy : MonoBehaviour
           else if (attacktimer<0&&isattack==true&&ishurting==false)
           {
              anim.SetTrigger("isattacking");
+              AudioManager.Instance.PlaySFX("enemyattack");
               target.GetComponent<Character>().hurt(20);
               attacktimer=1f;
           }
