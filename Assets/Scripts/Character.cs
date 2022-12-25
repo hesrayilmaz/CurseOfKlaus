@@ -19,11 +19,12 @@ public class Character : MonoBehaviour
     public Transform attackpoint;
     public LayerMask enemylayers;
     public bool canattack;
+    public GameObject UI;
     
     void Update()
     { 
         if (Time.timeScale!=0)
-        {
+        {     
              horizontal = Input.GetAxis("Horizontal");
              vertical = Input.GetAxis("Vertical");
              Animation();
@@ -149,8 +150,10 @@ public class Character : MonoBehaviour
     public void hurt(int damage)
     {
         health=health-damage;
+         UI.GetComponent<GameUI>().health(health);
         if (health<=0)
         {
+             
             //transform.position=checkpoint.position;
             SceneManager.LoadScene(1);
         }

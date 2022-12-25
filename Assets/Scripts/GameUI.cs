@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameUI : MonoBehaviour
 {
     public GameObject pause;
     public bool ispause;
+    public TextMeshProUGUI txt;
     void Start()
     {
 
         Time.timeScale=1;
         ispause=false;
+    }
+    public void health(int health)
+    {
+        txt.text=health+"";
     }
 
     void Update()
