@@ -86,41 +86,62 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         int roomToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * roomPercent);
 
         List<Vector2Int> roomsToCreate = potentialRoomPositions.OrderBy(x => Guid.NewGuid()).Take(roomToCreateCount).ToList();
-        int createdRoomCount = 1;
+        
         Debug.Log(roomToCreateCount);
 
         if (santaClone)
             Destroy(santaClone);
         itemPlacement.Reset();
 
+        Vector2Int[] startEndPoints = FindMostDistantPoints(roomsToCreate);
+        Vector2Int startPoint = startEndPoints[0];
+        Vector2Int endPoint = startEndPoints[1];
+
+
         foreach (var roomPosition in roomsToCreate)
         {
             var roomFloor = RunRandomWalk(randomWalkParameters, roomPosition);
             roomPositions.UnionWith(roomFloor);
 
-            if (createdRoomCount == 1)
+            if (roomPosition==startPoint)
             {
-                Debug.Log(createdRoomCount + " 1 " + roomsToCreate.Count);
                 character.transform.position = (Vector3Int)roomPosition;
-                itemPlacement.PlaceItems(roomFloor);
+                itemPlacement.PlaceItems(roomFloor, roomsToCreate);
             }
-            else if (createdRoomCount == roomToCreateCount)
+            else if (roomPosition == endPoint)
             {
-                Debug.Log(createdRoomCount + " 2 " + roomsToCreate.Count);
-                Debug.Log("noel baba");
                 santaClone = Instantiate(santa, (Vector3Int)roomPosition, Quaternion.identity);
             }
             else
             {
-                Debug.Log(createdRoomCount + " 3 " + roomsToCreate.Count);
-                itemPlacement.PlaceItems(roomFloor);
+                itemPlacement.PlaceItems(roomFloor, roomsToCreate);
                 itemPlacement.PlaceEnemies(roomFloor);
             }
 
-            createdRoomCount++;
-
         }
         return roomPositions;
+    }
+
+    private Vector2Int[] FindMostDistantPoints(List<Vector2Int> roomsToCreate)
+    {
+        float maxDistance = 0;
+        Vector2Int[] startEndPoints = new Vector2Int[2];
+
+        for (int i = 0; i < roomsToCreate.Count; i++)
+        {
+            for(int j = i + 1; j < roomsToCreate.Count; j++)
+            {
+                if(Vector2.Distance(roomsToCreate.ElementAt(i), roomsToCreate.ElementAt(j))> maxDistance)
+                {
+                    maxDistance = Vector2.Distance(roomsToCreate.ElementAt(i), roomsToCreate.ElementAt(j));
+                    Debug.Log("maxDistance: " + maxDistance);
+                    startEndPoints[0] = roomsToCreate.ElementAt(i);
+                    startEndPoints[1] = roomsToCreate.ElementAt(j);
+                }
+            }
+        }
+        Debug.Log("final distance: " + maxDistance);
+        return startEndPoints;
     }
 
     private void CreateCorridors(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> potentialRoomPositions)

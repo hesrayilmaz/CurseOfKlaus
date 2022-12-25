@@ -36,7 +36,7 @@ public class ItemPlacementManager : MonoBehaviour
         allItems.Clear();
     }
 
-    public void PlaceItems(HashSet<Vector2Int> floorPositions)
+    public void PlaceItems(HashSet<Vector2Int> floorPositions, List<Vector2Int> roomCenterPoints)
     {
         nearWallTilesUp=new HashSet<Vector3Int>();
         nearWallTilesDown=new HashSet<Vector3Int>();
@@ -48,48 +48,51 @@ public class ItemPlacementManager : MonoBehaviour
         
         foreach (Vector2Int pos in floorPositions)
         {
-            if (!floorPositions.Contains(pos + Vector2Int.up))
+            if (!roomCenterPoints.Contains(pos))
             {
-                if(floorPositions.Contains(pos + Vector2Int.down)&& floorPositions.Contains(pos + Vector2Int.right)&&
-                    floorPositions.Contains(pos + Vector2Int.left))
+                if (!floorPositions.Contains(pos + Vector2Int.up))
                 {
-                    nearWallTilesUp.Add((Vector3Int)pos);
-                    nearWallTiles.Add((Vector3Int)pos);
+                    if (floorPositions.Contains(pos + Vector2Int.down) && floorPositions.Contains(pos + Vector2Int.right) &&
+                        floorPositions.Contains(pos + Vector2Int.left))
+                    {
+                        nearWallTilesUp.Add((Vector3Int)pos);
+                        nearWallTiles.Add((Vector3Int)pos);
+                    }
                 }
-            }
-            else if(!floorPositions.Contains(pos + Vector2Int.down))
-            {
-                if (floorPositions.Contains(pos + Vector2Int.up) && floorPositions.Contains(pos + Vector2Int.right) &&
-                    floorPositions.Contains(pos + Vector2Int.left))
+                else if (!floorPositions.Contains(pos + Vector2Int.down))
                 {
-                    nearWallTilesDown.Add((Vector3Int)pos);
-                    nearWallTiles.Add((Vector3Int)pos);
+                    if (floorPositions.Contains(pos + Vector2Int.up) && floorPositions.Contains(pos + Vector2Int.right) &&
+                        floorPositions.Contains(pos + Vector2Int.left))
+                    {
+                        nearWallTilesDown.Add((Vector3Int)pos);
+                        nearWallTiles.Add((Vector3Int)pos);
+                    }
                 }
-            }
-            else if (!floorPositions.Contains(pos + Vector2Int.right))
-            {
-                if (floorPositions.Contains(pos + Vector2Int.up) && floorPositions.Contains(pos + Vector2Int.down) &&
-                    floorPositions.Contains(pos + Vector2Int.left))
+                else if (!floorPositions.Contains(pos + Vector2Int.right))
                 {
-                    nearWallTilesRight.Add((Vector3Int)pos);
-                    nearWallTiles.Add((Vector3Int)pos);
+                    if (floorPositions.Contains(pos + Vector2Int.up) && floorPositions.Contains(pos + Vector2Int.down) &&
+                        floorPositions.Contains(pos + Vector2Int.left))
+                    {
+                        nearWallTilesRight.Add((Vector3Int)pos);
+                        nearWallTiles.Add((Vector3Int)pos);
+                    }
                 }
-            }
-            else if (!floorPositions.Contains(pos + Vector2Int.left))
-            {
-                if (floorPositions.Contains(pos + Vector2Int.up) && floorPositions.Contains(pos + Vector2Int.down) &&
-                    floorPositions.Contains(pos + Vector2Int.right))
+                else if (!floorPositions.Contains(pos + Vector2Int.left))
                 {
-                    nearWallTilesLeft.Add((Vector3Int)pos);
-                    nearWallTiles.Add((Vector3Int)pos);
+                    if (floorPositions.Contains(pos + Vector2Int.up) && floorPositions.Contains(pos + Vector2Int.down) &&
+                        floorPositions.Contains(pos + Vector2Int.right))
+                    {
+                        nearWallTilesLeft.Add((Vector3Int)pos);
+                        nearWallTiles.Add((Vector3Int)pos);
+                    }
                 }
-            }
-            else
-            {
-                innerTiles.Add((Vector3Int)pos);
+                else
+                {
+                    innerTiles.Add((Vector3Int)pos);
+                }
             }
         }
-        
+            
         PlaceItems();
     }
 
