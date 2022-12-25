@@ -153,6 +153,7 @@ public class Character : MonoBehaviour
     {
         if (collision.gameObject.tag == "Water")
         {
+            AudioManager.Instance.PlaySFX("collect");
             counter.IncreaseScore();
             Destroy(collision.gameObject);
         }
