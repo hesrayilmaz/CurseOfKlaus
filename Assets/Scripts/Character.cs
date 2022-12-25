@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
              vertical = Input.GetAxis("Vertical");
              Animation();
              attackspacing();
-             if (Input.GetKeyDown(KeyCode.Space)&&canattack==true)
+             if (Input.GetKeyDown(KeyCode.C)&&canattack==true)
              {        
                  attack(); 
                  attackanimation();  

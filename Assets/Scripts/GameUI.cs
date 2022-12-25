@@ -36,4 +36,24 @@ public class GameUI : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void Muted()
+    {
+        AudioManager.Instance.ToggleMusic();
+         AudioManager.Instance.ToggleSFX();
+    }
+    public void paused()
+    {
+         if (ispause==false)
+            {
+                Time.timeScale=0;
+                pause.SetActive(true);
+                ispause=true;
+            }
+            else
+            {
+                Time.timeScale=1;
+                pause.SetActive(false);
+                ispause=false;
+            }
+    }
 }

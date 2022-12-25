@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public bool isdie;
     public bool ishurting;
+    public float currentrange;
 
 
     void Start()
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
     private void FollowPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        range=currentrange;
         anim.SetBool("iswalking",true);
     }
 

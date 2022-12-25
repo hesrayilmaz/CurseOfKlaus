@@ -27,4 +27,9 @@ public class MenuUI : MonoBehaviour
     {
         aboutscene.SetActive(false);
     }
+    public void Muted()
+    {
+        AudioManager.Instance.ToggleMusic();
+         AudioManager.Instance.ToggleSFX();
+    }
 }
