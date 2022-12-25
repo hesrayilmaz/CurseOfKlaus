@@ -20,18 +20,22 @@ public class Character : MonoBehaviour
     public bool canattack;
     
     void Update()
-    {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        Animation();
-        attackspacing();
-        if (Input.GetKeyDown(KeyCode.Space)&&canattack==true)
-        {        
-            attack(); 
-            attackanimation();  
-            canattack=false;      
+    { 
+        if (Time.timeScale!=0)
+        {
+             horizontal = Input.GetAxis("Horizontal");
+             vertical = Input.GetAxis("Vertical");
+             Animation();
+             attackspacing();
+             if (Input.GetKeyDown(KeyCode.Space)&&canattack==true)
+             {        
+                 attack(); 
+                 attackanimation();  
+                 canattack=false;      
+             }
+             transform.position = transform.position + new Vector3(horizontal, vertical) * speed * Time.deltaTime;  
         }
-        transform.position = transform.position + new Vector3(horizontal, vertical) * speed * Time.deltaTime;
+       
     }
     void attackspacing()
     {
@@ -146,7 +150,7 @@ public class Character : MonoBehaviour
         if (health<=0)
         {
             //transform.position=checkpoint.position;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
