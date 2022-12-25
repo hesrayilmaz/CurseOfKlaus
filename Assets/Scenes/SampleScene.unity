@@ -13372,7 +13372,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f035bf9d7d6094c9d70be9bc85f040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsToPlace: []
+  itemsToPlace:
+  - {fileID: 4474344562153789660, guid: 9948d8b4e89f9d440a8c5be9e8ffa26c, type: 3}
+  - {fileID: 8118724583273293752, guid: fc01bd62d8ae17844ac58a52ed185df0, type: 3}
+  - {fileID: 1842398601876911899, guid: 913413661792b04448c4c147b192e901, type: 3}
+  - {fileID: 9168087679555767596, guid: 18eea8be9cfba554ebd479224331fd4d, type: 3}
+  - {fileID: 9150196326310796704, guid: 4825e0423de3dc442be8058c2480be74, type: 3}
   torch: []
   enemy: {fileID: 6216242368781577946, guid: 12c8841eb95596e4baa7e1e0a4d81c97, type: 3}
   water: {fileID: 6791249735568863436, guid: fc738d6fd75848b43b696fd1e62d3b90, type: 3}

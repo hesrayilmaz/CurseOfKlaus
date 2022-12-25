@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class ItemPlacementManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] itemsToPlace;
-    [SerializeField] private GameObject[] torch;
+    [SerializeField] private GameObject[] itemsToHang;
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject water;
 
@@ -56,7 +56,6 @@ public class ItemPlacementManager : MonoBehaviour
                 {
                     //Debug.Log("222222222222");
                     nearWallTilesDown.Add((Vector3Int)pos);
-                    nearWallTiles.Add((Vector3Int)pos);
                 }
             }
             else if (!floorPositions.Contains(pos + Vector2Int.right))
@@ -96,24 +95,34 @@ public class ItemPlacementManager : MonoBehaviour
 
     private void PlaceItems()
     {
-        int itemCount = Random.Range(2, 6);
+        int itemCount = Random.Range(7, 10);
+        int itemHangCount = Random.Range(4, 6);
         int enemyCount = Random.Range(4, 7);
-        int tourchCount = 4;
         int waterCount = Random.Range(1, 4);
 
-        /*for(int i = 0; i < itemCount; i++)
+        for(int i = 0; i < itemCount; i++)
         {
-            GameObject.Instantiate(itemsToPlace[itemCount], innerTiles.ElementAt(Random.Range(0, innerTiles.Count)), Quaternion.identity);
-        }*/
-
-
+            var position = innerTiles.ElementAt(Random.Range(0, innerTiles.Count));
+            Instantiate(itemsToPlace[Random.Range(0,itemsToPlace.Length)], position, Quaternion.identity);
+            innerTiles.Remove(position);
+        }
+        for(int i = 0; i < itemHangCount; i++)
+        {
+            var position = nearWallTilesUp.ElementAt(Random.Range(0, nearWallTilesUp.Count));
+            Instantiate(itemsToHang[Random.Range(0, itemsToHang.Length)], position+Vector3Int.up, Quaternion.identity);
+            nearWallTilesUp.Remove(position);
+        }
         for (int i = 0; i < waterCount; i++)
         {
-            Instantiate(water, nearWallTiles.ElementAt(Random.Range(0, nearWallTiles.Count)), Quaternion.identity);
+            var position = nearWallTiles.ElementAt(Random.Range(0, nearWallTiles.Count));
+            Instantiate(water, position, Quaternion.identity);
+            nearWallTiles.Remove(position);
         }
         for (int i = 0; i < enemyCount; i++)
         {
-            Instantiate(enemy, innerTiles.ElementAt(Random.Range(0, innerTiles.Count)), Quaternion.identity);
+            var position = innerTiles.ElementAt(Random.Range(0, innerTiles.Count));
+            Instantiate(enemy, position, Quaternion.identity);
+            innerTiles.Remove(position);
         }
 
     }
